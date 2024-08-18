@@ -18,6 +18,7 @@ import speech_recognition as sr
 from auth import login
 from play_prompts import playPrompts, playPrompts2, playPrompts3
 from config.config import CHROMEDRIVER_PATH, URL, CALLDEAD, CALLON, CALLOFF
+from element_actions import perform_element_action,send_keys_to_element,wait_for_element_and_click
 
 nltk.downloader.download('vader_lexicon')
 
@@ -38,19 +39,14 @@ def agentActive(driver):
         driver.execute_script("arguments[0].style.visibility = 'visible';", agent_active_link)
         driver.execute_script("arguments[0].click();", agent_active_link)
         
-        link = WebDriverWait(driver, 60).until(
-            EC.element_to_be_clickable((By.LINK_TEXT, "Call Agent Again"))
-        )
-        link.click()
+        wait_for_element_and_click(driver, By.LINK_TEXT, "Call Agent Again", "click", timeout=60)
         
         alert = driver.switch_to.alert
         # Dismiss the alert
         alert.dismiss()
         print("Alert dismissed. Clicking 'Call Agent Again'.")
         
-        # Click the "Go Back" button
-        go_back_button = driver.find_element(By.XPATH,'//a[@onclick="NoneInSessionCalL();return false;"]')
-        go_back_button.click()
+        perform_element_action(driver,By.XPATH, '//a[@onclick="NoneInSessionCalL();return false;"]', None, 'click')
         
         time.sleep(2)
     
@@ -135,8 +131,7 @@ def playPromptGetReply(promptPart,driver):
                 return 1  # Positive sentiment, return 1
             else:
                 print("negative")
-                hangup_customer_link = driver.find_element(By.XPATH,'//a[@onclick="hangup_customer_button_click(\'\',\'\',\'\',\'\',\'YES\');"]')        
-                hangup_customer_link.click()
+                perform_element_action(driver,By.XPATH, '//a[@onclick="hangup_customer_button_click(\'\',\'\',\'\',\'\',\'YES\');"]',None, 'click')
                 
                 try:
                     alert_after_hangup = driver.switch_to.alert
@@ -147,8 +142,7 @@ def playPromptGetReply(promptPart,driver):
                     # you need to switch back to the default content first
                     driver.switch_to.default_content()
                     
-                    a_link = driver.find_element(By.XPATH,'//a[@onclick="DispoSelectContent_create(\'A\',\'ADD\',\'YES\');return false;"]')        
-                    a_link.click()
+                    perform_element_action(driver,By.XPATH, '//a[@onclick="DispoSelectContent_create(\'A\',\'ADD\',\'YES\');return false;"]',None, 'click')
                 
                     # Double-click the "A - Answering Machine" link
                     answering_machine_link = driver.find_element(By.XPATH,'//a[@onclick="DispoSelect_submit(\'\',\'\',\'YES\');return false;"]')    
@@ -174,9 +168,11 @@ def playPromptGetReply(promptPart,driver):
 def detectCallDisconnection():
     try:
         # Locate the image element that shows the call status
-        image_element = WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.XPATH, '//img[@name="livecall"]'))
-        )
+        # image_element = WebDriverWait(driver, 60).until(
+            # EC.presence_of_element_located((By.XPATH, '//img[@name="livecall"]'))
+        # )
+        
+        image_element = wait_for_element_and_click(driver, By.XPATH, '//img[@name="livecall"]', None, timeout=60)
         
         # Get the current source of the image
         current_image_source = image_element.get_attribute("src")
@@ -185,8 +181,7 @@ def detectCallDisconnection():
         if current_image_source == CALLDEAD:
             print("Live call is DEAD. Clicking 'Hangup Customer 1'...")
                 
-            hangup_customer_link = driver.find_element(By.XPATH,'//a[@onclick="hangup_customer_button_click(\'\',\'\',\'\',\'\',\'YES\');"]')        
-            hangup_customer_link.click()
+            perform_element_action(driver,By.XPATH, '//a[@onclick="hangup_customer_button_click(\'\',\'\',\'\',\'\',\'YES\');"]',None, 'click')
             
             try:
                 alert_after_hangup = driver.switch_to.alert
@@ -197,8 +192,7 @@ def detectCallDisconnection():
                 # you need to switch back to the default content first
                 driver.switch_to.default_content()
                 
-                a_link = driver.find_element(By.XPATH,'//a[@onclick="DispoSelectContent_create(\'A\',\'ADD\',\'YES\');return false;"]')        
-                a_link.click()
+                perform_element_action(driver,By.XPATH, '//a[@onclick="DispoSelectContent_create(\'A\',\'ADD\',\'YES\');return false;"]',None, 'click')
             
                 # Double-click the "A - Answering Machine" link
                 answering_machine_link = driver.find_element(By.XPATH,'//a[@onclick="DispoSelect_submit(\'\',\'\',\'YES\');return false;"]')    

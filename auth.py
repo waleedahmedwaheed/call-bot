@@ -41,7 +41,7 @@ def login(driver,url):
     time.sleep(2)
     
     try:
-        wait_for_element_and_click(driver, By.LINK_TEXT, "OK", timeout=6)
+        wait_for_element_and_click(driver, By.LINK_TEXT, "OK", "click", timeout=6)
     except TimeoutException:
         print("Timeout waiting for the link to be clickable")
     

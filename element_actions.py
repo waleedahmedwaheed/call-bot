@@ -42,7 +42,7 @@ def send_keys_to_element(element, keys):
     """
     element.send_keys(keys)
     
-def wait_for_element_and_click(driver, locator_type, locator_value, timeout=10):
+def wait_for_element_and_click(driver, locator_type, locator_value, action=None, timeout=10):
     """
     Wait for an element to be clickable and then click it.
 
@@ -56,7 +56,8 @@ def wait_for_element_and_click(driver, locator_type, locator_value, timeout=10):
         element = WebDriverWait(driver, timeout).until(
             EC.element_to_be_clickable((locator_type, locator_value))
         )
-        element.click()
+        if action == 'click':
+            element.click()
         return element
     except TimeoutException:
         print(f"Timeout waiting for the element located by {locator_type}='{locator_value}' to be clickable.")
