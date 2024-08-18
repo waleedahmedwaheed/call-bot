@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "gladiatorsverse",
+  "private_key_id": "0024519cdb67b95c8e565885c6707115332b93f4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEugIBADANBgkqhkiG9w0BAQEFAASCBKQwggSgAgEAAoIBAQCmfUuZWZjIdvDc\n7jsPLNl3WJFGf2o+c2NzmQeOI+eBZikd4qorLNTzUsOhUHmmwwn51NeYdcWKi6Vs\nks4j5BJ+wYK4ts39rUiyOWGW+PEIgWPQoRBy8TMoj5JFWwAfIe8Z9F8ILc5wXHy5\nlM+tFj5Ctv+zCsBBpSki3udkamuq68mrlmqd5Zqw02XSu3nhW5W/56uU6u8AyNKm\nRygbFNRCyWakuA7IpcJ+Fy30xvy1CviCcbOB2PNRzkXLZwpd5qepsJEiOOPdjPpO\nMRbzWbFialTALuRVLSZAEGR1yg4AFN/YAt8M5e4hvsC1YH8+h3LQ6bRewrTZpSRM\nbU5aeHunAgMBAAECgf8vzMlnvdGfvIZq5/sM4FOPcF5FX0+hnn9vMQB6TtSo0iv7\n6JfyzWxWb+y64+AJgPXcRL+hhi6xGGbmRT/qDhFBU020usdpjdbRVKgwMEkDqCKA\nQ731Qkrt2kqknvvp9FQxn3epYX1jxSoKHi+CAmDdxqyjOvL35fNpj5Xfvq4q5BDu\nqHHpK/16XgRJ/5Tv0eXKpPYT2HY8sgG8HK4f/4eLfQ4bXMkcazIUazl2Eg8mn0aF\nrqckue0rZ/yaLyu3MGPGW83xxnDUWWzk0JgeP/yPSyDtwPl/3v+wyIdHRipthtWE\nv/wF3YaMkOIlEeMOSSkV2Uacl/6fZzt3Z5Efz00CgYEA0z6EFVnfywgkHXEIEzRA\niwIcMMXZ6LN/Aj6lyOEdNYAgskSx43I4qawv0BqatU1N2a2OO96TVHmkCiAMTekr\nBNbsnqROCUsOhTMKgNjXSj02Gc1pb8SKupV5AnrZfvcl9s9KC+3iZRAc5qZl2Lpq\ndyHSQG7EiPfiKtypIxMKuqsCgYEAycNdpSKHBt1tH8hle8zLgoQt3U0gj5egCh4S\n3Ye2pZOTdVlYZOZCO6e1i4yFBjLcuVJsb4mSALskdtnHf9o6Zf8t5vzE8Njik5sv\nVebOqfwsm7K+03cMqGdukMkfxg86n7vNtk6Or64MUXzbMWXn/CH/jjKfwqNsZ5rT\nufs7gvUCgYBcLsDG7HRbjk7sRiIG91tfDemtYvmHsaSwHxSLh6kOar5Z7N5P6c1O\nRaSLxMBUc8qQPkt+Vs+mInryLDASY7jxILUbOYoQRh+tAqwHtBim/fU450mmi3ca\nmxW2flOhM0ru3GBsuj98aL6j7GMvY5IIMMsmcO/08W9R0v9AHhQlhwKBgC+RUtOq\n90CkFaUnnt14JAbKWPHSzDluWvnnqzT1WRdiWqKRBOkM7FKaMJAM+hPDDAzZJN2L\nBpQLiwZGQ+WdsqT3a4AI2fmaeJiqPpe3CcRDwtSWaKz8ZUySzhtuf4I3du/P3Cj+\nDl/W3eqcUCUuTGpCLbj9sHK4CsfGVeKEG7y9AoGABrScJLAGwG0lzdNzCdTGbv9C\nPfneAF/5oa1EonMvyNCoXHSEsZU4+6ZsV1c0hhg8IQNmy3j2dHu8sQCZ88hyWlL6\n8Z15Aw7GW8N0LFzTqlSHv4TLVTOfbMM6qSQCclldC0M9mmQM83CDslnCEdetWSDb\nVhwHyNcbK8vZTEfRWd0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "acebot@gladiatorsverse.iam.gserviceaccount.com",
+  "client_id": "108558411895988162027",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/acebot%40gladiatorsverse.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
