@@ -4,32 +4,30 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import TimeoutException, StaleElementReferenceException, ElementNotInteractableException, NoSuchElementException
 import time
-from element_actions import perform_element_action
+from element_actions import perform_element_action,send_keys_to_element,wait_for_element_and_click
+from config.config import USERNAME,PASSWORD
 
 def login(driver,url): 
 
     driver.get(url)
 
     VD_login_input = perform_element_action(driver,By.NAME,'phone_login')
-    VD_login_input.send_keys('8001')
-
-    VD_pass_input = perform_element_action(driver,By.NAME,'phone_pass')
-    VD_pass_input.send_keys('vici500')
+    send_keys_to_element(VD_login_input, USERNAME)
     
-    submit_button = perform_element_action(driver,By.NAME, 'login_sub')
-    submit_button.click()
+    VD_pass_input = perform_element_action(driver,By.NAME,'phone_pass')
+    send_keys_to_element(VD_pass_input, PASSWORD)
+    
+    perform_element_action(driver,By.NAME, 'login_sub', None, 'click')
     
     time.sleep(2)
     
     VD_login_input = perform_element_action(driver,By.NAME,'VD_login')
-    VD_login_input.send_keys('8001')
-
+    send_keys_to_element(VD_login_input, USERNAME)
+    
     VD_pass_input = perform_element_action(driver,By.NAME,'VD_pass')
-    VD_pass_input.send_keys('vici500')    
+    send_keys_to_element(VD_pass_input, PASSWORD)
 
-    # Click on the VD_campaign select element to trigger the loading of options
-    vd_campaign_select = perform_element_action(driver,By.NAME, 'VD_campaign')
-    vd_campaign_select.click()
+    perform_element_action(driver,By.NAME, 'VD_campaign', None, 'click')
 
     # Wait for a short duration after clicking to allow options to load
     time.sleep(2)
@@ -38,21 +36,17 @@ def login(driver,url):
     vd_campaign_select = Select(perform_element_action(driver,By.NAME,'VD_campaign'))
     vd_campaign_select.select_by_index(2)
 
-    submit_button2 = perform_element_action(driver,By.NAME,'login_sub')
-    submit_button2.click()
+    perform_element_action(driver,By.NAME, 'login_sub', None, 'click')
+    
     time.sleep(2)
     
     try:
-        link = WebDriverWait(driver, 6).until(
-            EC.element_to_be_clickable((By.LINK_TEXT, "OK"))
-        )
-        link.click()
+        wait_for_element_and_click(driver, By.LINK_TEXT, "OK", timeout=6)
     except TimeoutException:
         print("Timeout waiting for the link to be clickable")
     
     try:
-        ok_button = perform_element_action(driver,By.XPATH, '//a[@onclick="hideDiv(\'DeactivateDOlDSessioNSpan\');return false;"]')
-        ok_button.click()
+        perform_element_action(driver,By.XPATH, '//a[@onclick="hideDiv(\'DeactivateDOlDSessioNSpan\');return false;"]',None, 'click')
         time.sleep(2)
             
     except StaleElementReferenceException:
